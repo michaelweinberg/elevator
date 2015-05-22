@@ -1,7 +1,7 @@
 var EleView = Backbone.View.extend({
 	el:".application",
 	initialize:function(){
-		this.listenTo(this.model, "change:result", this.render);
+		this.listenTo(this.model, "change:currentFloor", this.render);
 	},
 	
 	events: {
@@ -13,11 +13,14 @@ var EleView = Backbone.View.extend({
 		var html = this.template(model);
 		this.$el.html(html);
 	},
+
 	runElevator:function(e){
+		
 		var floor = $(e.target).data("floor");
 		this.model.move(floor);	
 		// console.log(floor);
-		this.model.set("currentFloor", floor);
+		// this.model.set("currentFloor", floor);
+		
 		console.log(this.model.toJSON());
 	}
 	

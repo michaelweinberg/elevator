@@ -4,37 +4,36 @@ var EleModel = Backbone.Model.extend({
 		currentFloor:0
 	},
 	move:function(number){
-		//get the current floor the elevator is on
-		// var currentFloor = this.get("currentFloor");
-		//get the floor the elevator is going to
 		var currentFloor = this.get("currentFloor");
-		var goingTo = 0;
-		switch(number){
-			case "1":
-			var goingTo = 1;
-			break;
-			
-			case "2":
-			var goingTo = 2;
-			break;
-			
-			case "3":
-			var goingTo = 3;
-			break;
-			
-			case "4":
-			var goingTo = 4;
-			break;
-			
-			case "0":
-			var goingTo = 0;
-			break;
-			
-			default:0;
-			
-		}
+		// var goingTo = 0;
+		// switch(number){
+			// case "1":
+			// var goingTo = 1;
+			// break;
+// 			
+			// case "2":
+			// var goingTo = 2;
+			// break;
+// 			
+			// case "3":
+			// var goingTo = 3;
+			// break;
+// 			
+			// case "4":
+			// var goingTo = 4;
+			// break;
+// 			
+			// case "0":
+			// var goingTo = 0;
+			// break;
+// 			
+			// default:0;
+// 			
+		// }
 		
-		this.set("currentFloor", goingTo);	
+		// console.log("Helloe",);
+		
+		this.set("currentFloor", number);	
 		console.log(this.toJSON());	
 	
 	}
@@ -49,7 +48,7 @@ module.exports = EleModel;
 var EleView = Backbone.View.extend({
 	el:".application",
 	initialize:function(){
-		this.listenTo(this.model, "change:result", this.render);
+		this.listenTo(this.model, "change:currentFloor", this.render);
 	},
 	
 	events: {
@@ -61,11 +60,14 @@ var EleView = Backbone.View.extend({
 		var html = this.template(model);
 		this.$el.html(html);
 	},
+
 	runElevator:function(e){
+		
 		var floor = $(e.target).data("floor");
 		this.model.move(floor);	
 		// console.log(floor);
-		this.model.set("currentFloor", floor);
+		// this.model.set("currentFloor", floor);
+		
 		console.log(this.model.toJSON());
 	}
 	
