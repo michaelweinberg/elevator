@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>Mike's Elevator</title>
+		</head>
+	<body>
+		<div class="application"></div>
+		
+		<script type="text/html" id="elevator-template">
+			<div class="container">
+				<div class="doors">
+					<div class="left-door"></div>
+					<div class="right-door"</div>
+				</div>
+				<div class="controls">
+					<button class="number" data-floor="0">0</button>
+					<button class="number" data-floor="1">1</button>
+					<button class="number" data-floor="2">2</button>
+					<button class="number" data-floor="3">3</button>
+					<button class="number" data-floor="4">4</button>
+					
+				</div>
+				<div class="currentFloor">Your are currently at <%= currentFloor %></div>
+			</div>
+		</script>
+		<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.8.0/lodash.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.0/backbone-min.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
